@@ -55,6 +55,8 @@ export default {
 
 <style lang="scss" scoped>
 .bk-aside {
+    overflow-x: hidden;
+    overflow-y: auto;
     width: auto !important;
 
     &.opened .bk-menu-container {

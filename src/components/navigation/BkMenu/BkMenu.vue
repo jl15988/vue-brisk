@@ -29,7 +29,6 @@ export default {
 <style lang="scss" scoped>
 .bk-menu {
     width: 100%;
-    height: 100vh;
     max-height: 100vh;
 }
 </style>
