@@ -7,7 +7,7 @@
             <bk-menu-item
                 :data="menu"
                 :index-key="indexKey"
-                :default-link="!$attrs.router"
+                :router="$attrs.router"
             ></bk-menu-item>
         </template>
     </el-menu>

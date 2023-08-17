@@ -10,7 +10,8 @@
                     @select="selectHandle"
                     index-key="id"
                     :collapse="!menu.opened"
-                    :collapse-transition="false"></bk-menu>
+                    :collapse-transition="false"
+                ></bk-menu>
             </div>
         </el-aside>
         <el-container>

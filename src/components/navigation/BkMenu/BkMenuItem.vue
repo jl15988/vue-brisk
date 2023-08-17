@@ -4,7 +4,7 @@
         <bk-menu-item
             v-for="(child, index) in data.children"
             :data="child"
-            :index-key="indexKey"
+            v-bind="$attrs"
             :key="index"
         ></bk-menu-item>
     </el-menu-item-group>
@@ -19,11 +19,11 @@
         <bk-menu-item
             v-for="(child, index) in data.children"
             :data="child"
-            :index-key="indexKey"
+            v-bind="$attrs"
             :key="index"
         ></bk-menu-item>
     </el-submenu>
-    <router-link v-else-if="linkKey" :to="linkHandle()">
+    <router-link v-else-if="!router" :to="linkHandle()">
         <el-menu-item
             :index="indexHandle()">
             <i v-if="data.icon" :class="data.icon"></i>
@@ -48,6 +48,7 @@ export default {
         data: Object,
         index: String,
         indexKey: String,
+        router: Boolean,
         linkKey: String
     },
     methods: {

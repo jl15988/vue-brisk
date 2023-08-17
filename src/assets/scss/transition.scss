@@ -4,18 +4,21 @@
   transition: all .5s;
 }
 
-.breadcrumb-enter,
-.breadcrumb-leave-active {
+.breadcrumb-enter {
   opacity: 0;
-  transform: translateX(20px);
-}
-
-.breadcrumb-move {
-  transition: all .5s;
+  transform-origin: left bottom;
+  transform: rotate(-20deg) translateX(-10px) translateY(-20px);
 }
 
 .breadcrumb-leave-active {
   position: absolute;
+  opacity: 0;
+  transform-origin: left bottom;
+  transform: rotate(20deg) translateX(10px) translateY(10px);
+}
+
+.breadcrumb-move {
+  transition: all .5s;
 }
 
 /* logo-title transition */
