@@ -1,0 +1,63 @@
+[
+    {
+        "id": "1",
+        "title": "统计分析",
+        "icon": "el-icon-s-data",
+        "children": [
+            {
+                "id": "1-1",
+                "title": "浏览分析",
+                "icon": "el-icon-view",
+                "path": "/app/table"
+            },
+            {
+                "id": "1-2",
+                "title": "购买分析",
+                "icon": "el-icon-view"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "title": "订单管理",
+        "icon": "el-icon-tickets",
+        "path": "/home"
+    },
+    {
+        "id": "3",
+        "title": "分区管理",
+        "icon": "el-icon-tickets",
+        "children": [
+            {
+                "id": "3-1",
+                "title": "分区一",
+                "isGroup": true,
+                "children": [
+                    {
+                        "id": "3-1-1",
+                        "title": "a模块"
+                    },
+                    {
+                        "id": "3-1-2",
+                        "title": "b模块"
+                    }
+                ]
+            },
+            {
+                "id": "3-2",
+                "title": "分区二",
+                "isGroup": true,
+                "children": [
+                    {
+                        "id": "3-2-1",
+                        "title": "ac模块"
+                    },
+                    {
+                        "id": "3-2-2",
+                        "title": "bc模块"
+                    }
+                ]
+            }
+        ]
+    }
+]

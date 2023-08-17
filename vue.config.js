@@ -14,5 +14,12 @@ module.exports = defineConfig({
         deleteOriginalAssets: false, // 是否删除未压缩的源文件，谨慎设置，如果希望提供非gzip的资源，可不设置或者设置为false（比如删除打包后的gz后还可以加载到原始资源文件）
       }),
     ]
-  }
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "@/assets/scss/params.scss";`
+      }
+    }
+  },
 })

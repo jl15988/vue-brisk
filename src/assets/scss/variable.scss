@@ -1,0 +1,41 @@
+.bk-header-logo {
+  color: $header-logo-color;
+}
+
+.bk-aside {
+  background-color: $side-bg-color;
+
+  .el-menu {
+    background-color: $side-bg-color;
+
+    .el-menu {
+      background-color: $side-group-bg-color;
+
+      .el-menu-item:focus, .el-menu-item:hover {
+        outline: 0;
+        background-color: $side-hover-group-bg-color;
+      }
+
+      .el-submenu__title:focus, .el-submenu__title:hover {
+        background-color: $side-hover-group-bg-color;
+      }
+    }
+
+    .el-menu-item, .el-submenu__title, .el-submenu__icon-arrow, .el-menu-item i, .el-submenu__title i {
+      color: $side-font-color;
+    }
+  }
+
+  .el-menu-item:focus, .el-menu-item:hover {
+    outline: 0;
+    background-color: $side-hover-bg-color;
+  }
+
+  .el-submenu__title:focus, .el-submenu__title:hover {
+    background-color: $side-hover-bg-color;
+  }
+
+  .el-menu-item-group__title {
+    color: $side-group-title-color;
+  }
+}
