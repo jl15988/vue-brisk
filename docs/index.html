@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css"/>
+    <style>
+        .hide-code {
+            position: relative;
+            overflow-y: hidden !important;
+        }
+
+        .hide-code .hide-code-mask {
+            text-align: center;
+            width: 100%;
+            padding-top: 78px;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+            background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+
+        .hide-code .hide-code-mask .hide-code-mask-btn::before {
+            content: "";
+            cursor: pointer;
+            border-width: 9px;
+            border-style: solid;
+            border-color: #aaa transparent transparent transparent;
+            display: inline-block;
+            height: 0;
+            width: 0;
+            transform: translateY(10px);
+            margin-right: 20px;
+            transition: all .3s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">Loading...</div>
+<script>
+    window.$docsify = {
+        disqus: 'shortname',
+        repo: 'https://github.com/jl15988/vue-brisk.git',
+        name: 'vue-brisk',
+        nameLink: '/#/README',
+        coverpage: true,
+        loadNavbar: true,
+        loadSidebar: true,// 加载侧边栏
+        alias: {
+            '/.*/_sidebar.md': '/_sidebar.md',
+        },
+        subMaxLevel: 6,
+        sidebarDisplayLevel: 1,
+        count: {
+            countable: true,
+            fontsize: '0.9em',
+            color: 'rgb(90,90,90)',
+            language: 'chinese'
+        },
+        search: {
+            maxAge: 86400000,
+            paths: '/',
+            placeholder: '🔍 搜索',
+            noData: 'No Results',
+            namespace: 'website-1',
+        },
+        hideCode: {
+            scroll: false,
+            height: 300
+        },
+        plugins: [
+            function (hook, vm) {
+                // 添加页脚
+                var footer = [
+                    '<hr/>',
+                    '<footer>',
+                    '<span>Powered by <a href="https://github.com/jl15988" target="_blank">jl15988</a></span>',
+                    '</footer>'
+                ].join('');
+
+                hook.afterEach(function (html) {
+                    return html + footer;
+                });
+
+                var hideCodeConfig = vm.config.hideCode;
+                hook.doneEach(function () {
+                    if (hideCodeConfig) {
+                        var targetElms = Array.apply(null, document.querySelectorAll("pre[data-lang]"));
+                        var template = ['<div class="hide-code-mask">', '<div class="hide-code-mask-btn">', '</div>'].join("");
+                        targetElms.forEach(function (elm) {
+                            if (!hideCodeConfig.scroll && hideCodeConfig.height < elm.offsetHeight) {
+                                elm.classList.add('hide-code');
+                            }
+                            elm.style.maxHeight = hideCodeConfig.height + 'px';
+                            elm.insertAdjacentHTML("beforeend", template);
+                        });
+                    }
+                });
+
+                hook.mounted(function () {
+                    if (hideCodeConfig) {
+                        var listenerHost = document.querySelector(".content");
+                        listenerHost.addEventListener("click", function (evt) {
+                            var isCopyCodeButton = evt.target.classList.contains("hide-code-mask-btn");
+                            if (isCopyCodeButton) {
+                                var buttonElm = evt.target;
+                                var preElm = buttonElm.parentNode.parentNode;
+                                preElm.classList.remove('hide-code');
+                                preElm.style.maxHeight = "";
+                            }
+                        });
+                    }
+                });
+            }
+        ]
+    }
+</script>
+<!-- Docsify v4 -->
+<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+<!--<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>-->
+<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-scss.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-java.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-python.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+<!--  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>-->
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script>
+<!-- 侧边栏折叠箭头 -->
+<script src="sidebar.js"></script>
+</body>
+</html>
