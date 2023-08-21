@@ -1,5 +1,5 @@
 <template>
-    <fast-form :model="formData" :verify="dealMessage">
+    <bk-form :model="formData" :verify="verifyHandle">
         <el-form-item label="姓名" prop="name" require message="请选择xx">
             <el-input v-model="formData.name"></el-input>
         </el-form-item>
@@ -16,14 +16,15 @@
                 <el-option value="1" label="济南">济南</el-option>
             </el-select>
         </el-form-item>
-    </fast-form>
+    </bk-form>
 </template>
 
 <script>
-import FastForm from "@/components/from/FastForm/FastForm";
+import BkForm from "@/components/from/BkForm/BkForm";
+
 export default {
     name: "Form",
-    components: {FastForm},
+    components: {BkForm},
     data() {
         return {
             formData: {
@@ -35,7 +36,7 @@ export default {
         }
     },
     methods: {
-        dealMessage(props, item) {
+        verifyHandle(props, vn) {
             if (props.prop === "age") {
                 return (rule, value, callback) => {
                     if (!value) {

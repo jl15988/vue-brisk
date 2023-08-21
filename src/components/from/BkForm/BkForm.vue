@@ -15,7 +15,7 @@
 
 <script>
 export default {
-    name: "FastForm",
+    name: "BkForm",
     props: {
         defaultButtons: Boolean,
         verify: Function

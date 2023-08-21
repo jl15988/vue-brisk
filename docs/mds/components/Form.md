@@ -1,4 +1,4 @@
-#### 1. 轻表单（FastForm）🎹
+#### 1. 轻表单（BkForm）🎹
 
 >  不支持`rules`属性
 
@@ -8,7 +8,7 @@
 
 ```vue
 <template>
-    <fast-form :model="formData" :format-message="dealMessage">
+    <fast-form :model="formData" :verify="verifyHandle">
         <el-form-item label="姓名" prop="name" require message="请选择xx">
             <el-input v-model="formData.name"></el-input>
         </el-form-item>
@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import FastForm from "@/components/from/FastForm/FastForm";
+import FastForm from "@/components/from/BkForm/BkForm";
+
 export default {
     name: "Form",
     components: {FastForm},
@@ -44,7 +45,7 @@ export default {
         }
     },
     methods: {
-        dealMessage(props, item) {
+        verifyHandle(props, vn) {
             if (props.prop === "age") {
                 return (rule, value, callback) => {
                     if (!value) {
@@ -74,7 +75,7 @@ export default {
 | 参数            | 说明                                                         | 类型     | 可选择      | 默认值 |
 | --------------- | ------------------------------------------------------------ | -------- | ----------- | ------ |
 | default-buttons | 开启默认按钮，默认按钮包括取消和提交                         | Boolean  | true，false | false  |
-| verify          | 校验函数，通过该函数，你可以对添加校验规则，返回类型为 String，则直接提示，类型为对象，则直接添加当前对象为校验，类型为数组，则为校验数组，类型为函数，则为自定义校验 | Function | -           | -      |
+| verify          | 校验函数，通过该函数，你可以对添加校验规则，返回类型为 String，则直接提示，类型为对象，则直接添加当前对象为校验，类型为数组，则为校验数组，类型为函数，则为自定义校验。函数参数：props，组件的属性，如label、prop；vn，组件VNode。 | Function | -           | -      |
 
 ##### 事件
 
@@ -82,3 +83,12 @@ export default {
 | ------ | ------------------------------------------- | ------- |
 | submit | 开启default-buttons生效，点击提交按钮时触发 | - |
 | cancel | 开启default-buttons生效，点击取消按钮时触发 | - |
+
+##### 表单项（el-form-item）
+
+添加了额外属性
+
+| 参数    | 说明               | 类型    | 可选择      | 默认值 |
+| ------- | ------------------ | ------- | ----------- | ------ |
+| require | 是否必填           | Boolean | true，false | false  |
+| message | 校验必填的提示信息 | String  | -           | -      |
