@@ -24,6 +24,13 @@ const routes = [
         meta: {
             title: '首页'
         }
+    },
+    {
+        path: '/form',
+        meta: {
+            title: '首页'
+        },
+        component: () => import('../views/test/from/Form')
     }
 ]
 
