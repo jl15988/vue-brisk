@@ -1,6 +1,10 @@
 <template>
     <div>
-        <bk-variable-table :labels="labels" :data="list" border></bk-variable-table>
+        <bk-variable-table :labels="labels" :data="list" border>
+            <template #status="{row}">
+                {{ row.age > 20 ? '符合' : '不符合' }}
+            </template>
+        </bk-variable-table>
     </div>
 </template>
 
@@ -13,6 +17,9 @@ export default {
     data() {
         return {
             labels: [{
+                label: '序号',
+                type: 'index'
+            }, {
                 label: '姓名',
                 prop: 'name',
                 width: '200'
@@ -41,6 +48,10 @@ export default {
                         prop: 'city'
                     }]
                 }]
+            }, {
+                label: '状态',
+                prop: 'status',
+                slot: 'status'
             }],
             list: [{
                 name: '张三',

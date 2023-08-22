@@ -35,7 +35,8 @@
                 "children": [
                     {
                         "id": "3-1-1",
-                        "title": "a模块"
+                        "title": "a模块",
+                        "disabled": true
                     },
                     {
                         "id": "3-1-2",

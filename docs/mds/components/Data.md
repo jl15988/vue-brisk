@@ -1,13 +1,15 @@
 #### 1. 动态表格（VariableTable）🎹
 
-> 不支持自定义模板
+能够根据JSON数据渲染表格，多用于动态生成表格的应用，并满足EUI的所有属性，复杂内容可定义 `slot` 属性，通过插槽进行自定义内容。
 
-能够根据JSON数据渲染表格，多用于动态生成表格的应用，并满足EUI的所有属性，但不支持自定义模板。
-
-```/*vue*/
+```vue
 <template>
     <div>
-        <bk-variable-table :labels="labels" :data="list" border></bk-variable-table>
+        <bk-variable-table :labels="labels" :data="list" border>
+            <template #status="{row}">
+                {{ row.age > 20 ? '符合' : '不符合' }}
+            </template>
+        </bk-variable-table>
     </div>
 </template>
 
@@ -20,6 +22,9 @@ export default {
     data() {
         return {
             labels: [{
+                label: '序号',
+                type: 'index'
+            }, {
                 label: '姓名',
                 prop: 'name',
                 width: '200'
@@ -48,6 +53,10 @@ export default {
                         prop: 'city'
                     }]
                 }]
+            }, {
+                label: '状态',
+                prop: 'status',
+                slot: 'status'
             }],
             list: [{
                 name: '张三',
@@ -77,6 +86,13 @@ export default {
 
 ##### 📃 属性
 
-| 参数   | 说明                                             | 类型   | 可选择 | 默认值 |
-| ------ | ------------------------------------------------ | ------ | ------ | ------ |
-| labels | 表格列，Table-column所拥有的属性，可以直接设置。 | Object | -      | -      |
+| 参数   | 说明                                                         | 类型   | 可选择 | 默认值 |
+| ------ | ------------------------------------------------------------ | ------ | ------ | ------ |
+| labels | 表格列，Table-column所拥有的属性，可以直接设置，添加额外的 `slot` 属性来表明当前列为自定义。 | Object | -      | -      |
+
+##### 🎨 插槽
+
+| 名称         | 说明                                    |
+| ------------ | --------------------------------------- |
+| 定义的slot值 | 自定义内容，参数为 {row, column, index} |
+

@@ -23,20 +23,21 @@
             :key="index"
         ></bk-menu-item>
     </el-submenu>
-    <router-link v-else-if="!router" :to="linkHandle()">
+    <router-link v-else-if="!router && !data.disabled" :to="linkHandle()">
         <el-menu-item
-            :index="indexHandle()">
+            :index="indexHandle()"
+            :disabled="!!data.disabled">
             <i v-if="data.icon" :class="data.icon"></i>
             <span slot="title">{{ data.title }}</span>
         </el-menu-item>
     </router-link>
     <el-menu-item
         v-else
-        :index="indexHandle()">
+        :index="indexHandle()"
+        :disabled="!!data.disabled">
         <i v-if="data.icon" :class="data.icon"></i>
         <span slot="title">{{ data.title }}</span>
     </el-menu-item>
-
 </template>
 
 <script>
@@ -53,6 +54,7 @@ export default {
     },
     methods: {
         indexHandle() {
+            console.log(this.data)
             return this.indexKey ? this.data[this.indexKey] : StringUtil.uuid(true);
         },
         linkHandle() {

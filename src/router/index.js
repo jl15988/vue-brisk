@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import BkMainContainer from "@/components/layout/BkMainContainer";
 
 Vue.use(VueRouter)
 
@@ -9,6 +10,7 @@ const routes = [
         meta: {
             title: 'app'
         },
+        component: BkMainContainer,
         children: [
             {
                 path: 'table',
@@ -49,7 +51,9 @@ VueRouter.prototype.push = function (location, resolve, reject) {
         originPush.call(this, location, resolve, reject);
     } else {
         // 如果没有传回调函数，手动添加
-        originPush.call(this, location, () => {}, () => {});
+        originPush.call(this, location, () => {
+        }, () => {
+        });
     }
 }
 
