@@ -51,13 +51,7 @@
         'flexible-alerts': {
             style: 'flat'
         },
-        gitalk: {
-            clientID: '2362d980f4d66efee5f7',
-            clientSecret: '7d804af80579b83950ee1427b4ace4f69f58aac7',
-            repo: 'vue-brisk',
-            owner: 'jl15988',
-            admin: ['jl15988']
-        },
+        gitalk: true,
         plugins: [
             function (hook, vm) {
                 // 添加页脚
@@ -78,8 +72,28 @@
                 ].join('');
 
                 hook.afterEach(function (html) {
-                    return html + footer;
+                    html = html + footer;
+                    html = html + "<div id='gitalk-container' style='width: 80%;padding-left: 80px;'></div>";
+                    return html;
                 });
+
+                hook.doneEach(() => {
+                    if (vm.config.gitalk) {
+                        window.title_id = window.location.hash.match(/#(.*?)([?]|$)/) ? window.location.hash.match(/#(.*?)([?]|$)/)[1] : '/';
+                        const gitalk = new Gitalk({
+                            clientID: '2362d980f4d66efee5f7',
+                            clientSecret: '7d804af80579b83950ee1427b4ace4f69f58aac7',
+                            repo: 'vue-brisk',
+                            owner: 'jl15988',
+                            admin: ['jl15988'],
+                            title: decodeURI(window.title_id),
+                            distractionFreeMode: false, // 是否添加全屏遮罩
+                            id: window.title_id,  // 页面的唯一标识，gitalk 会根据这个标识自动创建的issue的标签,我们使用页面的相对路径作为标识
+                            enableHotKey: true, // 提交评论快捷键(cmd/ctrl + enter)
+                        })
+                        gitalk.render('gitalk-container');
+                    }
+                })
             }
         ]
     }
@@ -121,7 +135,7 @@
 <script src="sidebar.js"></script>
 <!-- Gitalk 评论系统 -->
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="https://unpkg.com/docsify-gitalk@1.0.0/dist/docsify-gitalk.min.js"></script>
+<!--<script src="https://unpkg.com/docsify-gitalk@1.0.0/dist/docsify-gitalk.min.js"></script>-->
 <script src="https://unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
 </body>
 </html>
