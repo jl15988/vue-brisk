@@ -81,6 +81,7 @@
                     if (vm.config.gitalk) {
                         window.title_id = window.location.hash.match(/#(.*?)([?]|$)/) ? window.location.hash.match(/#(.*?)([?]|$)/)[1] : '/';
                         const gitalk = new Gitalk({
+                            proxy: 'https://proxy',
                             clientID: '2362d980f4d66efee5f7',
                             clientSecret: '7d804af80579b83950ee1427b4ace4f69f58aac7',
                             repo: 'vue-brisk',
