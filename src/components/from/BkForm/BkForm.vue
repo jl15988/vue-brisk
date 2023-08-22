@@ -32,6 +32,15 @@ export default {
         onCancel() {
             this.$emit('cancel');
         },
+        notRequireRules(rules) {
+            if (!rules || rules.length === 0) return true;
+            for (let rule of rules) {
+                if (rule.required) {
+                    return false;
+                }
+            }
+            return true;
+        },
         // 生成Rule
         dealRule(slot) {
             const componentOptions = slot.componentOptions;
@@ -55,32 +64,34 @@ export default {
                 }
             }
 
+            const rules = [];
             let message = "";
             if (this.verify) {
                 message = this.verify(props, slot);
                 if (message instanceof Function) {
                     // 如果是函数，则识别为自定义校验规则
-                    return [{
+                    rules.push({
                         validator: message,
                         trigger: trigger
-                    }]
+                    });
                 } else if (message instanceof Object) {
                     // 如果是对象或数组，则识别为校验规则
-                    return [message];
+                    rules.push(message);
                 } else if (message instanceof Array) {
-                    return message;
+                    rules.push.apply(rules, message);
                 }
             }
-            if (!message && (attrs.require || attrs.require === '')) {
+            if (this.notRequireRules(rules) && (attrs.require || attrs.require === '')) {
                 // 如果为空，且设置为必填，则赋值默认的提示信息
                 const messageProp = attrs.message;
                 message = messageProp ? messageProp : `请${operate}${props.label || '内容'}`;
+                rules.push({
+                    required: true,
+                    message: message,
+                    trigger: trigger
+                });
             }
-            return [{
-                required: true,
-                message: message,
-                trigger: trigger
-            }]
+            return rules;
         }
     },
     mounted() {

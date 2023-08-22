@@ -13,10 +13,11 @@ export default {
         const handleKeys = Object.keys(handles);
         // 处理数据
         const datas = data;
-        for (let datum of datas) {
+        for (let i = 0; i < datas.length; i++) {
+            const datum = datas[i];
             for (let key in datum) {
                 if (handleKeys.includes(key)) {
-                    datum[key] = handles[key](datum);
+                    datum[key] = handles[key](datum, i);
                 }
             }
         }
