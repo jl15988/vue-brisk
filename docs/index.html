@@ -51,7 +51,8 @@
         'flexible-alerts': {
             style: 'flat'
         },
-        gitalk: true,
+        // 评论，由于存在跨域问题，暂时关闭
+        // gitalk: true,
         plugins: [
             function (hook, vm) {
                 // 添加页脚
@@ -73,17 +74,18 @@
 
                 hook.afterEach(function (html) {
                     html = html + footer;
+                    // 评论，由于存在跨域问题，暂时关闭
                     html = html + "<div id='gitalk-container' style='width: 80%;padding-left: 80px;'></div>";
                     return html;
                 });
 
                 hook.doneEach(() => {
+                    // 评论，由于存在跨域问题，暂时关闭
                     if (vm.config.gitalk) {
                         window.title_id = window.location.hash.match(/#(.*?)([?]|$)/) ? window.location.hash.match(/#(.*?)([?]|$)/)[1] : '/';
                         const gitalk = new Gitalk({
-                            proxy: 'https://ghproxy.com/https://github.com/login/oauth/access_token',
-                            clientID: '2362d980f4d66efee5f7',
-                            clientSecret: '7d804af80579b83950ee1427b4ace4f69f58aac7',
+                            clientID: '',
+                            clientSecret: '',
                             repo: 'vue-brisk',
                             owner: 'jl15988',
                             admin: ['jl15988'],
@@ -135,8 +137,8 @@
 <!-- 侧边栏折叠箭头 -->
 <script src="sidebar.js"></script>
 <!-- Gitalk 评论系统 -->
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
 <!--<script src="https://unpkg.com/docsify-gitalk@1.0.0/dist/docsify-gitalk.min.js"></script>-->
-<script src="https://unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+<!--<script src="https://unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>-->
 </body>
 </html>
