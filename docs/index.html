@@ -12,6 +12,12 @@
 </head>
 <body>
 <div id="app">Loading...</div>
+
+<!-- 代码演示 -->
+<!--<script src="//unpkg.com/vue@2.7.14/dist/vue.js"></script>-->
+<!--<script src="//unpkg.com/babel-standalone@6/babel.min.js"></script>-->
+<!--<script src="//unpkg.com/docsify-demo-box-vue/dist/docsify-demo-box-vue.min.js"></script>-->
+<!--<script src="//unpkg.com/element-ui/lib/index.js"></script>-->
 <script>
     window.$docsify = {
         // disqus: 'shortname',
@@ -58,17 +64,10 @@
                 // 添加页脚
                 var footer = [
                     '<hr/>',
-                    '<footer>',
-                    '<span id="busuanzi_container_site_pv" style=\'display:none\'>',
-                    '🍺总访问量：',
-                    '<span id="busuanzi_value_site_pv"></span> 次 | ',
-                    '</span>',
-                    '<span id="busuanzi_container_site_uv" style=\'display:none\'>',
-                    '🍻总访客数：',
-                    '<span id="busuanzi_value_site_uv"></span> 人',
-                    '</span>',
-                    '<br />',
-                    '<span>Powered by <a href="https://github.com/jl15988" target="_blank">jl15988</a></span>',
+                    '<footer id="page-footer">',
+                    '<span>Powered by <a href="https://github.com/jl15988" target="_blank">github @ jl15988</a></span>',
+                    ' 🍻 <span><a href="https://space.bilibili.com/394641202" target="_blank">bilibili @ 会功夫的李白</a></span>',
+                    ' 📝 <span><a href="https://blog.csdn.net/jl15988" target="_blank">CSDN @ 会功夫的李白</a></span>',
                     '</footer>'
                 ].join('');
 
@@ -96,7 +95,7 @@
                         })
                         gitalk.render('gitalk-container');
                     }
-                })
+                });
             }
         ]
     }
@@ -124,16 +123,13 @@
 <!-- disqus评论 -->
 <!--<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script>-->
 <!-- 代码块折叠 -->
-<script src="https://cdn.jsdelivr.net/npm/docsify-hide-code/dist/docsify-hide-code.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/docsify-hide-code/dist/docsify-hide-code.min.js"></script>-->
 <!-- 更新时间 -->
 <script src="https://cdn.jsdelivr.net/npm/docsify-updated/src/time-updater.min.js"></script>
 <!-- 美化提示样式 https://github.com/fzankl/docsify-plugin-flexible-alerts -->
 <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
 <!-- 访问量统计 -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!-- 代码演示 -->
-<script src="//unpkg.com/vue/dist/vue.global.js"></script>
-<script src="https://unpkg.com/docsify-demo-box-vue/dist/docsify-demo-box-vue.min.js"></script>
 <!-- 侧边栏折叠箭头 -->
 <script src="sidebar.js"></script>
 <!-- Gitalk 评论系统 -->

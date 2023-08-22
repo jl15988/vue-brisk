@@ -4,7 +4,7 @@
 
 能够根据JSON数据渲染表格，多用于动态生成表格的应用，并满足EUI的所有属性，但不支持自定义模板。
 
-```vue
+```/*vue*/
 <template>
     <div>
         <bk-variable-table :labels="labels" :data="list" border></bk-variable-table>
