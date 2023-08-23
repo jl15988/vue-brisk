@@ -10,7 +10,7 @@
 
 ```vue
 <template>
-    <fast-form :model="formData" :verify="verifyHandle">
+    <bk-form :model="formData" :verify="verifyHandle" :btn-texts="['确定']" @submit="onSubmit">
         <el-form-item label="姓名" prop="name" require message="请选择xx">
             <el-input v-model="formData.name"></el-input>
         </el-form-item>
@@ -27,15 +27,15 @@
                 <el-option value="1" label="济南">济南</el-option>
             </el-select>
         </el-form-item>
-    </fast-form>
+    </bk-form>
 </template>
 
 <script>
-import FastForm from "@/components/from/BkForm/BkForm";
+import BkForm from "@/components/from/BkForm/BkForm";
 
 export default {
     name: "Form",
-    components: {FastForm},
+    components: {BkForm},
     data() {
         return {
             formData: {
@@ -47,6 +47,9 @@ export default {
         }
     },
     methods: {
+        onSubmit() {
+            console.log('Form submit');
+        },
         verifyHandle(props, vn) {
             if (props.prop === "age") {
                 return (rule, value, callback) => {
@@ -74,17 +77,18 @@ export default {
 
 ##### 📃 属性
 
-| 参数            | 说明                                                         | 类型     | 可选择      | 默认值 |
-| --------------- | ------------------------------------------------------------ | -------- | ----------- | ------ |
-| default-buttons | 开启默认按钮，默认按钮包括取消和提交                         | Boolean  | true，false | false  |
-| verify          | 校验函数，通过该函数，你可以添加校验规则，与require不冲突，如果返回的的校验中含有必填校验，则优先为自定义的校验。<br />返回不同类型有不同效果：<li>类型为 String，则直接提示</li><li>类型为 Object，则直接添加为一项校验</li><li>类型为 Array，则为校验数组</li><li>类型为 Function，则为自定义校验，参数为 {props, vn}，props中包含组件含有的属性，如label、prop等；vn为组件的VNode。</li> | Function | -           | -      |
+| 参数<div style="width: 100px"></div> | 说明                                                         | 类型                               | 可选择      | 默认值 |
+| ------------------------------------ | ------------------------------------------------------------ | ---------------------------------- | ----------- | ------ |
+| btn                                  | 开启默认按钮，默认按钮包括取消和提交                         | Boolean                            | true，false | false  |
+| btn-texts                            | 默认按钮显示的文字，设置该属性可以不开启默认按钮。第一个参数为提交按钮，第二个为取消按钮。 | Array(String)                      | -           | -      |
+| verify                               | 校验函数，通过该函数，你可以添加校验规则，与require不冲突，如果返回的的校验中含有必填校验，则优先为自定义的校验。<br />返回不同类型有不同效果：<li>类型为 String，则直接提示</li><li>类型为 Object，则直接添加为一项校验</li><li>类型为 Array，则为校验数组</li><li>类型为 Function，则为自定义校验，参数为 {props, vn}，props中包含组件含有的属性，如label、prop等；vn为组件的VNode。</li> | Function(props: Object, vn: VNode) | -           | -      |
 
 ##### 🔗 事件
 
 | 参数   | 说明                                        | 回调参数 |
 | ------ | ------------------------------------------- | ------- |
-| submit | 开启default-buttons生效，点击提交按钮时触发 | - |
-| cancel | 开启default-buttons生效，点击取消按钮时触发 | - |
+| submit | 开启 btn 生效，点击提交按钮时触发 | - |
+| cancel | 开启 btn 生效，点击取消按钮时触发 | - |
 
 #### 2. 表单项（el-form-item）🎹
 

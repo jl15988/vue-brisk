@@ -5,7 +5,13 @@
         :rules="ruleList"
         :validate-on-rule-change="false">
         <slot></slot>
-        <el-form-item v-if="defaultButtons">
+        <el-form-item v-if="btnTexts && btnTexts.length">
+            <template v-for="(button, index) in btnTexts">
+                <el-button v-if="index === 1" @click="onCancel">{{ button }}</el-button>
+                <el-button v-if="index === 0" type="primary" @click="onSubmit">{{ button }}</el-button>
+            </template>
+        </el-form-item>
+        <el-form-item v-else-if="btn">
             <el-button @click="onCancel">取消</el-button>
             <el-button type="primary" @click="onSubmit">提交</el-button>
         </el-form-item>
@@ -17,7 +23,13 @@
 export default {
     name: "BkForm",
     props: {
-        defaultButtons: Boolean,
+        btn: Boolean,
+        btnTexts: {
+            type: Array,
+            default: function () {
+                return ['提交', '取消'];
+            }
+        },
         verify: Function
     },
     data() {

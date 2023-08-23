@@ -1,5 +1,5 @@
 <template>
-    <bk-form :model="formData" :verify="verifyHandle">
+    <bk-form :model="formData" :verify="verifyHandle" :btn-texts="['确定']" @submit="onSubmit">
         <el-form-item label="姓名" prop="name" require message="请选择xx">
             <el-input v-model="formData.name"></el-input>
         </el-form-item>
@@ -36,6 +36,9 @@ export default {
         }
     },
     methods: {
+        onSubmit() {
+            console.log('Form submit');
+        },
         verifyHandle(props, vn) {
             if (props.prop === "age") {
                 return (rule, value, callback) => {

@@ -54,7 +54,6 @@ export default {
     },
     methods: {
         indexHandle() {
-            console.log(this.data)
             return this.indexKey ? this.data[this.indexKey] : StringUtil.uuid(true);
         },
         linkHandle() {

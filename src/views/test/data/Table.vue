@@ -1,6 +1,9 @@
 <template>
     <div>
         <bk-variable-table :labels="labels" :data="list" border>
+            <template slot="status-header" slot-scope="scope">
+                状态 <i @click="onStatus(scope)" class="el-icon-edit-outline data-table-header-icon"></i>
+            </template>
             <template #status="{row}">
                 {{ row.age > 20 ? '符合' : '不符合' }}
             </template>
@@ -17,6 +20,8 @@ export default {
     data() {
         return {
             labels: [{
+                type: 'selection'
+            }, {
                 label: '序号',
                 type: 'index'
             }, {
@@ -70,8 +75,10 @@ export default {
             },]
         }
     },
-    mounted() {
-
+    methods: {
+        onStatus(scope) {
+            console.log(scope.column);
+        }
     }
 }
 </script>
