@@ -1,5 +1,5 @@
 <template>
-    <div class="bk-header-logo">
+    <div class="bk-header-logo" :style="{color: $config.globalAttrs.headerLogo.color}">
         <router-link :to="to">
             <slot>
                 <h1 v-if="title && !menu.opened">{{ title.substr(0, 1).toUpperCase() }}</h1>

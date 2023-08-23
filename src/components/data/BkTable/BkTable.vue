@@ -1,5 +1,5 @@
 <template>
-    <el-table :data="list" v-bind="$attrs" v-on="$listeners">
+    <el-table :data="list" v-bind="$globalAttrs.append($attrs, 'table')" v-on="$listeners">
         <template v-for="label in labels">
             <el-table-column v-if="label.slot && (!label.children || !label.children.length)" v-bind="dealLabel(label)">
                 <template slot="header" slot-scope="scope">
@@ -9,7 +9,7 @@
                     <slot :name="label.slot" :row="scope.row" :column="scope.column" :index="scope.$index"></slot>
                 </template>
             </el-table-column>
-            <bk-variable-table-column v-else-if="label" v-bind="dealLabel(label)"></bk-variable-table-column>
+            <bk-table-column v-else-if="label" v-bind="dealLabel(label)"></bk-table-column>
         </template>
         <template #append>
             <slot name="append"></slot>
@@ -19,11 +19,11 @@
 
 <script>
 import dataUtil from "@/utils/dataUtil";
-import BkVariableTableColumn from "@/components/data/BkVariableTable/BkVariableTableColumn";
+import BkTableColumn from "@/components/data/BkTable/BkTableColumn";
 
 export default {
     name: "BkVariableTable",
-    components: {BkVariableTableColumn},
+    components: {BkTableColumn},
     props: {
         labels: Array,
         data: Array
@@ -31,7 +31,7 @@ export default {
     computed: {
         list() {
             return dataUtil.labelDataCope(this.labels, this.data);
-        },
+        }
     },
     methods: {
         dealLabel(label) {

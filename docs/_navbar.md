@@ -1,4 +1,3 @@
 - [首页](/)
 - [我的B站](https://space.bilibili.com/394641202)
 - [我的博客](https://blog.csdn.net/jl15988)
-- [Gitee](https://gitee.com/jl15988/vue-brisk)

@@ -1,27 +1,27 @@
-#### 1. 动态表格（VariableTable）🎹
+#### 1. 轻表格（BkTable）🎹
 
 能够根据 JSON 数据渲染表格，多用于动态生成表格的应用，并满足EUI的所有属性，复杂内容可定义 `slot` 属性，通过插槽进行自定义内容。
 
 ```vue
 <template>
     <div>
-        <bk-variable-table :labels="labels" :data="list" border>
+        <bk-table :labels="labels" :data="list">
             <template slot="status-header" slot-scope="scope">
                 状态 <i @click="onStatus(scope)" class="el-icon-edit-outline data-table-header-icon"></i>
             </template>
             <template #status="{row}">
                 {{ row.age > 20 ? '符合' : '不符合' }}
             </template>
-        </bk-variable-table>
+        </bk-table>
     </div>
 </template>
 
 <script>
-import BkVariableTable from "@/components/data/BkVariableTable/BkVariableTable";
+import BkTable from "@/components/data/BkTable/BkTable";
 
 export default {
     name: "Table",
-    components: {BkVariableTable},
+    components: {BkTable},
     data() {
         return {
             labels: [{

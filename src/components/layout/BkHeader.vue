@@ -1,12 +1,13 @@
 <template>
-    <el-header class="bk-header">
+    <el-header class="bk-header" :height="height">
         <el-button
             :icon="`el-icon-s-${menu.opened ? 'fold' : 'unfold'}`"
             type="text"
             class="menu-button"
-            @click="menuButtonHandle"></el-button>
+            @click="menuButtonHandle"
+            :style="{lineHeight: height}"></el-button>
         <template v-if="breadcrumb">
-            <bk-breadcrumb></bk-breadcrumb>
+            <bk-breadcrumb :style="{lineHeight: height}"></bk-breadcrumb>
         </template>
         <template v-else>
             <slot></slot>
@@ -25,7 +26,10 @@ export default {
         breadcrumb: Boolean
     },
     computed: {
-        ...mapGetters(['menu'])
+        ...mapGetters(['menu']),
+        height() {
+            return this.$globalAttrs.pickAttr(this.$attrs, 'layout', 'height', 'headerHeight');
+        }
     },
     methods: {
         menuButtonHandle() {
@@ -40,7 +44,6 @@ export default {
     .menu-button {
         font-size: 24px;
         display: inline-block;
-        line-height: $header-height;
         float: left;
         padding: 0;
         color: #303133;
@@ -49,7 +52,6 @@ export default {
     .bk-breadcrumb {
         margin-left: 10px;
         display: inline-block;
-        line-height: $header-height;
     }
 }
 </style>

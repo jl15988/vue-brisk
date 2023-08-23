@@ -1,8 +1,9 @@
 <template>
     <el-menu
-        v-bind="$attrs"
+        v-bind="attr"
         v-on="$listeners"
-        class="bk-menu">
+        class="bk-menu"
+        :style="$globalAttrs.varStyle($props, 'menu', ['subBackgroundColor', 'hoverBackgroundColor', 'hoverSubBackgroundColor', 'groupTitleColor'])">
         <template v-for="menu in list">
             <bk-menu-item
                 :data="menu"
@@ -21,7 +22,20 @@ export default {
     components: {BkMenuItem},
     props: {
         list: Array,
-        indexKey: String
+        indexKey: String,
+        // 子菜单背景色
+        subBackgroundColor: String,
+        // 激活的背景色
+        hoverBackgroundColor: String,
+        // 子菜单激活的背景色
+        hoverSubBackgroundColor: String,
+        // 组标题颜色
+        groupTitleColor: String
+    },
+    computed: {
+        attr() {
+            return this.$globalAttrs.append(this.$attrs, 'menu', ['backgroundColor', 'textColor', 'activeTextColor']);
+        }
     }
 }
 </script>

@@ -1,22 +1,22 @@
 <template>
     <div>
-        <bk-variable-table :labels="labels" :data="list" border>
+        <bk-table :labels="labels" :data="list">
             <template slot="status-header" slot-scope="scope">
                 状态 <i @click="onStatus(scope)" class="el-icon-edit-outline data-table-header-icon"></i>
             </template>
             <template #status="{row}">
                 {{ row.age > 20 ? '符合' : '不符合' }}
             </template>
-        </bk-variable-table>
+        </bk-table>
     </div>
 </template>
 
 <script>
-import BkVariableTable from "@/components/data/BkVariableTable/BkVariableTable";
+import BkTable from "@/components/data/BkTable/BkTable";
 
 export default {
     name: "Table",
-    components: {BkVariableTable},
+    components: {BkTable},
     data() {
         return {
             labels: [{

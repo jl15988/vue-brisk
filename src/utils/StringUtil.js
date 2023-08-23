@@ -14,5 +14,37 @@ export default {
             }
             return (c === 'x' ? random : (random & 0x3) | 0x8).toString(16);
         });
-    }
+    },
+    /**
+     * 驼峰转连字符
+     */
+    toHyphen(str) {
+        return str.replace(/([A-Z])/g, '-$1').toLowerCase();
+    },
+    toHyphens(arr) {
+        return arr.map(item => this.toHyphen(item));
+    },
+    toHyphenObject(obj) {
+        const res = {};
+        for (let objKey in obj) {
+            res[this.toHyphen(objKey)] = obj[objKey];
+        }
+        return res;
+    },
+    /**
+     * 连字符转驼峰
+     */
+    toHump(str) {
+        return str.replace(/-(\w)/g, (_, c) => c ? c.toUpperCase() : '');
+    },
+    toHumps(arr) {
+        return arr.map(item => this.toHump(item));
+    },
+    toHumpObject(obj) {
+        const res = {};
+        for (let objKey in obj) {
+            res[this.toHump(objKey)] = obj[objKey];
+        }
+        return res;
+    },
 }

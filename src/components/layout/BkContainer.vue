@@ -1,6 +1,9 @@
 <template>
     <el-container>
-        <el-aside class="bk-aside" :class="{'opened': menu.opened}">
+        <el-aside
+            class="bk-aside"
+            :class="{'opened': menu.opened}"
+            :style="{'--menu-backgroundColor': $config.globalAttrs.menu.backgroundColor, '--layout-sideWith': $config.globalAttrs.layout.sideWith}">
             <div class="bk-menu-container">
                 <bk-header-logo title="vue-brisk">
                     <img :src="require('@/assets/logo.png')"/>
@@ -16,10 +19,14 @@
         </el-aside>
         <el-container>
             <bk-header breadcrumb></bk-header>
-            <el-main class="bk-container-main">
+            <el-main class="bk-container-main" :style="mainStyle">
                 <slot></slot>
             </el-main>
-            <el-footer class="bk-footer">&copy; jl15988 版权所有</el-footer>
+            <el-footer
+                class="bk-footer"
+                :height="$config.globalAttrs.layout.footerHeight"
+                :style="{lineHeight: $config.globalAttrs.layout.footerHeight}">&copy; jl15988 版权所有
+            </el-footer>
         </el-container>
     </el-container>
 </template>
@@ -40,7 +47,18 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['menu'])
+        ...mapGetters(['menu']),
+        mainStyle() {
+            const globalLayout = this.$config.globalAttrs.layout;
+            if (globalLayout.mainHeight === 'fully') {
+                return {
+                    height: `calc(100vh - (${globalLayout.headerHeight} + ${globalLayout.footerHeight}))`
+                }
+            }
+            return {
+                height: globalLayout.mainHeight
+            }
+        }
     },
     methods: {
         selectHandle(index, indexPath) {
@@ -60,7 +78,7 @@ export default {
     width: auto !important;
 
     &.opened .bk-menu-container {
-        width: $side-width;
+        width: var(--layout-sideWith);
     }
 
     .bk-menu-container {
@@ -69,19 +87,12 @@ export default {
     }
 }
 
-.bk-header {
-    height: $header-height !important;
-}
-
 .bk-container-main {
-    height: $main-height;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 .bk-footer {
-    height: $footer-height !important;
-    line-height: $footer-height;
     color: #aaa;
 }
 </style>
