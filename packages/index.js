@@ -26,7 +26,7 @@ const components = [
 const install = function (Vue, options) {
     if (install.installed) return;
 
-    const config = Vue.prototype.$config = dealGlobalAttr.deepAppend(Vue.prototype.$config);
+    const config = Vue.prototype.$config = dealGlobalAttr.deepAppend(Vue.prototype.$config || {});
 
     const cssObj = {
         '--menu-backgroundColor': config.globalAttrs.menu.backgroundColor,

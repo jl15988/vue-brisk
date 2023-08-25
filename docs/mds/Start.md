@@ -16,7 +16,7 @@ Vue.use(VueBrisk);
 
 > [!Warning]
 >
-> 由于vue-brisk依赖EUI，使用vue-brisk必须引入EUI
+> 由于vue-brisk依赖EUI，使用vue-brisk必须引入EUI！
 
 
 
@@ -28,7 +28,13 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueBrisk from 'vue-brisk';
 import 'vue-brisk/lib/vue-brisk.css';
 
+import config from "@/config";
+Vue.prototype.$config = config
+
 Vue.use(ElementUI);
 Vue.use(VueBrisk);
 ```
 
+> [!Note]
+>
+> config引入需写在`Vue.use(VueBrisk)`之前，否则config配置将无效。

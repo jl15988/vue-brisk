@@ -1,6 +1,6 @@
 # vue-brisk
 
-![](https://img.shields.io/badge/github-jl15988-000000?logo=github&link=https://github.com/jl15988) ![](https://img.shields.io/badge/github-vue--brisk-000000?logo=github&link=https://github.com/jl15988/vue-brisk)
+![](https://img.shields.io/badge/github-jl15988-000000?logo=github&link=https://github.com/jl15988) ![](https://img.shields.io/badge/github-vue--brisk-000000?logo=github&link=https://github.com/jl15988/vue-brisk) ![NPM](https://img.shields.io/npm/l/vue-brisk) ![npm package minimized gzipped size (select exports)](https://img.shields.io/bundlejs/size/vue-brisk) ![npm](https://img.shields.io/npm/v/vue-brisk)
 
 > 这是一个简洁、高效、快速的开发框架。
 

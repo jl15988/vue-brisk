@@ -1,13 +1,15 @@
 {
   "name": "vue-brisk",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "private": false,
-  "main": "dist/vue-brisk.umd.min.js",
+  "main": "lib/vue-brisk.common.js",
   "description": "Provide ready to use components and tools.",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "package": "vue-cli-service build --target lib ./packages/index.js --name vue-brisk --dest lib"
+    "package": "vue-cli-service build --target lib ./packages/index.js --name vue-brisk --dest lib",
+    "doc": "docsify serve docs",
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",

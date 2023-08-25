@@ -2,9 +2,9 @@
     <el-container>
         <el-aside
             class="bk-aside"
-            :class="{'opened': sideOpened}">
+            :class="{'opened': this.sideOpened}">
             <div class="bk-menu-container">
-                <bk-header-logo title="vue-brisk">
+                <bk-header-logo title="vue-brisk" :opened="sideOpened">
                     <slot name="header-logo"></slot>
                 </bk-header-logo>
                 <bk-menu

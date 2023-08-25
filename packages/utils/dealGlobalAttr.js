@@ -85,7 +85,9 @@ export default {
         let cur = {};
         const config1Keys = Object.keys(config1);
         for (let config1Key in config1) {
-            if (config1[config1Key] instanceof Object && config2[config1Key] instanceof Object) {
+            if (!config2[config1Key]) {
+                cur[config1Key] = config1[config1Key];
+            } else if (config1[config1Key] instanceof Object && config2[config1Key] instanceof Object) {
                 // 如果两者皆为对象，则循环深度循环处理
                 cur[config1Key] = this.toDeepAppend(config1[config1Key], config2[config1Key]);
             } else {
