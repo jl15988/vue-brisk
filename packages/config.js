@@ -32,14 +32,16 @@ export default {
             backgroundColor: "#409EFF",
             // 子菜单背景色
             subBackgroundColor: '#006be0',
-            // 激活的背景色
+            // 鼠标指向的背景色
             hoverBackgroundColor: '#50aaff',
-            // 子菜单激活的背景色
+            // 子菜单鼠标指向的背景色
             hoverSubBackgroundColor: '#005cc0',
+            // 选中的背景颜色
+            activeBackgroundColor: '',
             // 文字颜色
             textColor: '#dbebff',
             // 激活的文字颜色
-            activeTextColor: '',
+            activeTextColor: '#fffd46',
             // 组标题颜色
             groupTitleColor: '#80bcff'
         }
