@@ -1,3 +1,7 @@
+- [更新日志](mds/Logs.md)
+- **开始**
+  - [安装](mds/Install.md)
+  - [快速上手](mds/Start.md)
 - **说明**
   - [注意事项（必看）](mds/Show.md)
   - [Config配置](mds/Config.md)

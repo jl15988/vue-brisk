@@ -1,0 +1,63 @@
+[
+    {
+        "id": "1",
+        "title": "布局（Layout）",
+        "icon": "el-icon-monitor",
+        "children": [
+            {
+                "id": "1-1",
+                "title": "全局容器（Container）",
+                "path": "/layout/container"
+            },
+            {
+                "id": "1-2",
+                "title": "标头（Header）",
+                "path": "/layout/header"
+            },
+            {
+                "id": "1-3",
+                "title": "标头logo（HeaderLogo）",
+                "path": "/layout/headerLogo"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "title": "数据（Data）",
+        "icon": "el-icon-coin",
+        "children": [
+            {
+                "id": "2-1",
+                "title": "轻表格（BkTable）",
+                "path": "/data/bk-table"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "title": "表单（Form）",
+        "icon": "el-icon-tickets",
+        "children": [
+            {
+                "id": "3-1",
+                "title": "轻表单（BkForm）",
+                "path": "/form/bk-form"
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "title": "导航（Navigation）",
+        "icon": "el-icon-position",
+        "children": [
+            {
+                "id": "4-1",
+                "title": "菜单（BkMenu）"
+            },
+            {
+                "id": "4-2",
+                "title": "面包屑（BkBreadcrumb）"
+            }
+        ]
+    }
+]

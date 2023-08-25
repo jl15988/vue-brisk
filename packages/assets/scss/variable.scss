@@ -1,0 +1,54 @@
+/*
+变量样式
+ */
+.bk-aside {
+  // 侧边栏背景色
+  background-color: var(--menu-backgroundColor) !important;
+
+  .el-menu {
+
+    // 子菜单
+    .el-menu {
+      background-color: var(--menu-subBackgroundColor) !important;
+
+      .el-menu-item {
+        background-color: inherit !important;
+      }
+
+      // 鼠标指向背景色
+      .el-menu-item:focus, .el-menu-item:hover, .el-menu-item.is-active:focus, .el-menu-item.is-active:hover {
+        background-color: var(--menu-hoverSubBackgroundColor) !important;
+      }
+
+      .el-submenu__title:focus, .el-submenu__title:hover {
+        background-color: var(--menu-hoverSubBackgroundColor) !important;
+      }
+
+      // 选中背景颜色
+      .el-menu-item.is-active {
+        background-color: var(--menu-activeBackgroundColor) !important;
+      }
+    }
+  }
+
+  .el-menu-item:focus, .el-menu-item:hover, .el-menu-item.is-active:focus, .el-menu-item.is-active:hover {
+    background-color: var(--menu-hoverBackgroundColor) !important;
+  }
+
+  .el-submenu__title:focus, .el-submenu__title:hover {
+    background-color: var(--menu-hoverBackgroundColor) !important;
+  }
+
+  .el-menu-item.is-active {
+    background-color: var(--menu-activeBackgroundColor) !important;
+  }
+
+  // 组标题
+  .el-menu-item-group__title {
+    color: var(--menu-groupTitleColor) !important;
+  }
+}
+
+.el-menu-item i, .el-submenu__title i {
+  color: inherit !important;
+}

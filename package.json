@@ -1,11 +1,30 @@
 {
   "name": "vue-brisk",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.1",
+  "private": false,
+  "main": "dist/vue-brisk.umd.min.js",
+  "description": "Provide ready to use components and tools.",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "package": "vue-cli-service build --target lib ./packages/index.js --name vue-brisk --dest lib"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jl15988/vue-brisk"
+  },
+  "keywords": [
+    "vue",
+    "vue-brisk",
+    "jl15988",
+    "elementui"
+  ],
+  "author": "jl15988",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jl15988/vue-brisk/issues"
+  },
+  "homepage": "https://jl15988.github.io/vue-brisk/",
   "dependencies": {
     "compression-webpack-plugin": "^10.0.0",
     "core-js": "^3.8.3",
