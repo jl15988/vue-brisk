@@ -3,7 +3,7 @@ export default {
      * 解析labels，处理data，用于处理表格数据
      */
     labelDataCope(labels, data) {
-        if (!data instanceof Array || !data.length) {
+        if (!labels || !data || !data instanceof Array || !data.length) {
             return data;
         }
         // 提取带有处理方法的label
@@ -30,7 +30,7 @@ export default {
      * 处理多级数组index，用于添加菜单默认index
      */
     realArrayIndex(arr, key, index) {
-        if (!arr instanceof Array || !arr.length) {
+        if (!arr || !arr instanceof Array || !arr.length) {
             return arr;
         }
         for (let i = 0; i < arr.length; i++) {

@@ -38,7 +38,7 @@ export default {
     },
     methods: {
         menuButtonHandle() {
-            this.$emit('side-change');
+            this.$emit('opened-change');
         }
     }
 }

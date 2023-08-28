@@ -10,14 +10,15 @@
                 <bk-menu
                     :list="menus"
                     @select="selectHandle"
-                    :index-key="menusKey"
+                    :index-key="menuIndexKey"
                     :collapse="!sideOpened"
                     :collapse-transition="false"
                 ></bk-menu>
             </div>
         </el-aside>
         <el-container>
-            <bk-header breadcrumb side-stretch :side-opened="sideOpened" @side-change="sideChange"></bk-header>
+            <bk-header breadcrumb :side-stretch="sideStretch" :side-opened="sideOpened"
+                       @opened-change="openedChange"></bk-header>
             <el-main class="bk-container-main" :style="mainStyle">
                 <slot></slot>
             </el-main>
@@ -39,8 +40,9 @@ export default {
     name: "BkContainer",
     components: {BkHeaderLogo, BkHeader, BkMenu},
     props: {
-        menusKey: String,
+        menuIndexKey: String,
         menus: [],
+        sideStretch: Boolean,
         sideOpened: {
             type: Boolean,
             default: true
@@ -63,8 +65,8 @@ export default {
         selectHandle(index, indexPath) {
             this.$emit('menu-select', index, indexPath);
         },
-        sideChange() {
-            this.$emit('side-change');
+        openedChange() {
+            this.$emit('opened-change');
         }
     }
 }

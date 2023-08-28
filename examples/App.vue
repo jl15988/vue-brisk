@@ -1,6 +1,11 @@
 <template>
     <div id="app">
-        <bk-container :menus="menus" :side-opened="menu.opened" @side-change="sideChange" @menu-select="menuSelect">
+        <bk-container
+            :menus="menus"
+            side-stretch
+            :side-opened="menu.opened"
+            @opened-change="openedChange"
+            @menu-select="menuSelect">
             <template slot="header-logo">
                 <img slot="header-logo" :src="require('./assets/logo.png')"/>
             </template>
@@ -38,7 +43,7 @@ export default {
         ...mapGetters(['menu'])
     },
     methods: {
-        sideChange() {
+        openedChange() {
             this.$store.commit('setting/CHANGE_MENU_STATUS');
         },
         menuSelect(index, indexPath) {

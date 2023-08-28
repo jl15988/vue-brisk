@@ -1,14 +1,15 @@
 #### 1. 菜单（Menu）🎹
 
-包含了EUI的所有属性，简化了item的装配，只需提供菜单的JSON数据，即可生成菜单，颜色等设置可移步[scss变量配置](#scss变量配置)。
+包含了EUI的所有属性，简化了item的装配，只需提供菜单的JSON数据即可生成菜单，可配置全局颜色等参数，可移步[Config 配置](mds/Config)。
 
 ```vue
 <bk-menu
     :list="menus"
     @select="selectHandle"
-    index-key="path"
-    :default-active="$route.path"
-    router></bk-menu>
+    :index-key="menuIndexKey"
+    :collapse="!sideOpened"
+    :collapse-transition="false"
+></bk-menu>
 ```
 
 ##### 📃 属性
@@ -16,11 +17,12 @@
 | 参数                      | 说明                                                         | 类型          | 可选择 | 默认值 |
 | ------------------------- | ------------------------------------------------------------ | ------------- | ------ | ------ |
 | list                      | 菜单列表，属性见[list属性参数](mds/components/Navigation?id=📃-list属性参数)。 | Array(Object) | -      | []     |
-| index-key                 | 子菜单用于标识的属性名称，会将该属性设置为菜单表示，若没有则自动生成级别ID，如1，1-1等。 | String        | -      | -      |
-| sub-background-color      | 子菜单背景色。                                               | String        | -      |        |
-| hover-background-color    | 激活的背景色。                                               | String        | -      |        |
-| hover-subBackground-color | 子菜单激活的背景色。                                         | String        | -      |        |
-| group-title-color         | 组标题颜色。                                                 | String        | -      |        |
+| index-key                 | 菜单项用于标识的属性名称，会将该属性设置为菜单标识，若没有则自动生成级别ID，如1，1-1等。 | String        | -      | 默认生成的级别ID |
+| sub-background-color      | 子菜单背景色。                                               | String        | -      | #006be0 |
+| hover-background-color    | 鼠标指向的背景色。                                       | String        | -      | #50aaff |
+| hover-sub-background-color | 子菜单鼠标指向的背景色。                              | String        | -      | #005cc0 |
+| group-title-color         | 组标题颜色。                                                 | String        | -      | #80bcff |
+| active-background-color | 选中的背景颜色。 | String | - | - |
 
 ##### 📃 list属性参数
 
@@ -43,8 +45,8 @@
 ```vue
 <bk-menu-item
     :data="menu"
-    :index-key="indexKey"
-    :default-link="!$attrs.router"
+    :index-key="id"
+    router
 ></bk-menu-item>
 ```
 
