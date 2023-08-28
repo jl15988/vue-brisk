@@ -18,7 +18,6 @@
 
 <script>
 import BkBreadcrumb from "../navigation/BkBreadcrumb";
-import {mapGetters} from "vuex";
 
 export default {
     name: "BkHeader",
