@@ -1,6 +1,6 @@
 {
   "name": "vue-brisk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "main": "lib/vue-brisk.common.js",
   "description": "Provide ready to use components and tools.",
