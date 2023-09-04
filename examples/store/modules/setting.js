@@ -6,9 +6,9 @@ export default {
         }
     },
     mutations: {
-        CHANGE_MENU_STATUS: state => {
-            state.menu.opened = !state.menu.opened;
-            localStorage.setItem('menuStatus', state.menu.opened ? '1' : '0');
+        CHANGE_MENU_STATUS: (state, status) => {
+            state.menu.opened = status;
+            localStorage.setItem('menuStatus', status ? "1" : "0");
         }
     },
     actions: {}

@@ -78,7 +78,7 @@ export default {
     },
     methods: {
         onStatus(scope) {
-            console.log(scope.column);
+            this.$message.info("点击了编辑");
         }
     }
 }

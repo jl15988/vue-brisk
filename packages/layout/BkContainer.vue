@@ -65,8 +65,8 @@ export default {
         selectHandle(index, indexPath) {
             this.$emit('menu-select', index, indexPath);
         },
-        openedChange() {
-            this.$emit('opened-change');
+        openedChange(open) {
+            this.$emit('opened-change', open);
         }
     }
 }

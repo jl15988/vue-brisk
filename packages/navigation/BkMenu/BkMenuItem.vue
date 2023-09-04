@@ -56,6 +56,8 @@ export default {
         indexHandle() {
             if (this.indexKey) {
                 return this.data[this.indexKey];
+            } else if (this.data.path) {
+              return this.data.path;
             } else if (this.data.defaultIndex) {
                 return this.data.defaultIndex;
             } else {

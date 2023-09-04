@@ -3,6 +3,7 @@
         v-bind="attr"
         v-on="$listeners"
         class="bk-menu"
+        :default-active="menuActive"
         :style="$globalAttrs.varStyle($props, 'menu', ['subBackgroundColor', 'hoverBackgroundColor', 'hoverSubBackgroundColor', 'groupTitleColor', 'activeBackgroundColor'])">
         <template v-for="menu in menus">
             <bk-menu-item
@@ -23,6 +24,8 @@ export default {
     components: {BkMenuItem},
     props: {
         list: Array,
+        // 当前激活菜单的 index
+        defaultActive: String,
         indexKey: String,
         // 子菜单背景色
         subBackgroundColor: String,
@@ -44,6 +47,13 @@ export default {
                 dataUtil.realArrayIndex(this.list, 'children');
             }
             return this.list;
+        },
+        menuActive() {
+            if (this.defaultActive) {
+                return this.defaultActive;
+            } else {
+                return this.$route.path;
+            }
         }
     }
 }

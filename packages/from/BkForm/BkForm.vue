@@ -1,5 +1,6 @@
 <template>
     <el-form
+        ref="elForm"
         v-bind="$attrs"
         v-on="$listeners"
         :rules="ruleList"
@@ -38,6 +39,18 @@ export default {
         }
     },
     methods: {
+        validate(cb) {
+            this.$refs.elForm.validate(cb);
+        },
+        validateField(props, cb) {
+            this.$refs.elForm.validateField(props, cb);
+        },
+        resetFields() {
+            this.$refs.elForm.resetFields();
+        },
+        clearValidate(props) {
+            this.$refs.elForm.clearValidate(props);
+        },
         onSubmit() {
             this.$emit('submit');
         },

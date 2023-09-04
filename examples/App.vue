@@ -31,9 +31,11 @@ body {
 import menus from './data/menus.json'
 import {mapGetters} from "vuex";
 import BkContainer from "../packages/layout/BkContainer";
+import winResize from "./mixin/winResize";
 
 export default {
     components: {BkContainer},
+    mixins: [winResize],
     data() {
         return {
             menus: []
@@ -43,8 +45,8 @@ export default {
         ...mapGetters(['menu'])
     },
     methods: {
-        openedChange() {
-            this.$store.commit('setting/CHANGE_MENU_STATUS');
+        openedChange(open) {
+            this.$store.commit('setting/CHANGE_MENU_STATUS', open);
         },
         menuSelect(index, indexPath) {
             console.log(index, indexPath)

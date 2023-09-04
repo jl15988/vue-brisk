@@ -10,8 +10,8 @@
 
 ```vue
 <template>
-    <bk-form :model="formData" :verify="verifyHandle" :btn-texts="['确定']" @submit="onSubmit">
-        <el-form-item label="姓名" prop="name" require message="请选择xx">
+    <bk-form :model="formData" ref="form" :verify="verifyHandle" :btn-texts="['确定']" @submit="onSubmit">
+        <el-form-item label="姓名" prop="name" require message="请选择姓名">
             <el-input v-model="formData.name"></el-input>
         </el-form-item>
         <el-form-item label="性别" prop="sex" require>
@@ -31,11 +31,9 @@
 </template>
 
 <script>
-import BkForm from "@/components/from/BkForm/BkForm";
 
 export default {
     name: "Form",
-    components: {BkForm},
     data() {
         return {
             formData: {
@@ -49,6 +47,14 @@ export default {
     methods: {
         onSubmit() {
             console.log('Form submit');
+            this.$refs.form.validate((valid) => {
+                if (valid) {
+                    this.$message.success("Form submit");
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
         },
         verifyHandle(props, vn) {
             if (props.prop === "age") {
@@ -90,7 +96,7 @@ export default {
 | submit | 开启 btn 生效，点击提交按钮时触发。 | - |
 | cancel | 开启 btn 生效，点击取消按钮时触发。 | - |
 
-##### 🎨插槽
+##### 🎨 插槽
 
 | 名称   | 说明                                                     |
 | ------ | -------------------------------------------------------- |
